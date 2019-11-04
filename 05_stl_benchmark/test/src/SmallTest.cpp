@@ -111,5 +111,24 @@ TEST(SmallTest, Clear) {
     }
 }
 
+TEST(SmallTest, LessThanOperator)
+{
+    Small a{5};
+    Small b{10};
+    EXPECT_EQ(true, a < b);
+}
 
-// TODO: Add tests for your operators implementation!
+
+TEST(SmallTest, EqualOperator)
+{
+    Small a{2};
+    Small b{ 2};
+    EXPECT_EQ(true, a == b);
+}
+
+TEST(SmallTest, HashOperator)
+{
+    Small a{2};
+    std::hash<Small> hash;
+    EXPECT_EQ(2 * 13 % 255, hash(a));
+}
