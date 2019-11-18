@@ -1,0 +1,55 @@
+TODO: Create class diagram...
+
+@startuml
+
+class Foo {
+}
+
+class Observable{
+    -std::set<Observer*> observers
+    +void registerObserver(Observer*)
+    +void unregisterObserver(Observer*)
+    #void notifyObservers(float)
+}
+
+class Observable
+note right: for(Observer* observer : observers)\nobserver->notify(value)
+
+
+interface Observer{
+    +void notify(float)
+}
+
+class Displacement{
+    -float value
+    +void set(float)
+}
+
+class Acceleration{
+    -bool hasFirstValue
+    -bool hasSecondValue
+    -bool hasThirdValue
+    -float firstValue
+    -float secondValue
+    -float thirdValue
+    +float get()
+}
+
+class Speed{
+    -bool hasFirstValue
+        -bool hasSecondValue
+        -float firstValue
+        -float secondValue
+        +float get()
+}
+
+Observable <|-- Displacement
+Observable "1" o-- "*" Observer
+Observer <|-- Acceleration
+Observer <|-- Speed
+Displacement <.. Acceleration : observes
+Displacement <.. Speed : observes
+
+
+
+@enduml
