@@ -129,6 +129,9 @@ TEST(SmallTest, EqualOperator)
 TEST(SmallTest, HashOperator)
 {
     Small a{2};
+    Small b {2};
+    Small c = {3};
     std::hash<Small> hash;
-    EXPECT_EQ(2 * 13 % 255, hash(a));
+    EXPECT_EQ(true, hash(a) == hash(b));
+    EXPECT_EQ(false, hash(a) == hash(c));
 }

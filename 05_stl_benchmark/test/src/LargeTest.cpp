@@ -109,4 +109,28 @@ TEST(LargeTest, Clear) {
 }
 
 
-// TODO: Add tests for your operators implementation!
+TEST(LargeTest, HasIsLessOpetator){
+    Large a = {1,2,3,4,5};
+    Large b = {1,2,3,4,5,6};
+    Large c = {1};
+    EXPECT_EQ(true, a < b);
+    EXPECT_EQ(false, a < c);
+    EXPECT_EQ(false, b < c);
+}
+
+TEST(LargeTest, HasIsEqualOperator){
+    Large a  = {1, 2, 3, 4, 5};
+    Large b = {1, 2,3, 4, 5};
+    Large c = {1, 2, 3, 4};
+    EXPECT_EQ(true, a == b);
+    EXPECT_EQ(false, a == c);
+}
+
+TEST(LargeTest, HasHashFunction){
+    Large a = {1,2,3,4,5};
+    Large b = {1,2,3,4,5};
+    Large c = {1,2,3,4};
+    std::hash<Large> hash;
+    EXPECT_EQ(true, hash(a) == hash(b));
+    EXPECT_EQ(false, hash(b) == hash(c));
+}

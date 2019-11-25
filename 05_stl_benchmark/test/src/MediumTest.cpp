@@ -105,4 +105,28 @@ TEST(MediumTest, Clear) {
     }
 }
 
-// TODO: Add tests for your operators implementation!
+TEST(MediumTest, HasIsLessOpetator){
+    Medium a = {1,2,3,4,5};
+    Medium b = {1,2,3,4,5,6};
+    Medium c = {1};
+    EXPECT_EQ(true, a < b);
+    EXPECT_EQ(false, a < c);
+    EXPECT_EQ(false, b < c);
+}
+
+TEST(MediumTest, HasIsEqualOperator){
+    Medium a  = {1, 2, 3, 4, 5};
+    Medium b = {1, 2,3, 4, 5};
+    Medium c = {1, 2, 3, 4};
+    EXPECT_EQ(true, a == b);
+    EXPECT_EQ(false, a ==c);
+}
+
+TEST(MediumTest, HasHashFunction){
+    Medium a = {1,2,3,4,5};
+    Medium b = {1,2,3,4,5};
+    Medium c = {1,2,3,4};
+    std::hash<Medium> hash;
+    EXPECT_EQ(true, hash(a) == hash(b));
+    EXPECT_EQ(false, hash(b) == hash(c));
+}
