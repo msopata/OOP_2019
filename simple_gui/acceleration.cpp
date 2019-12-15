@@ -6,7 +6,11 @@ Acceleration::Acceleration(QObject *parent) : QObject(parent)
 
 }
 
-void Acceleration::onSpeedChanged(double v)
+void Acceleration::onSpeedChange(double v)
 {
+    currSpeed = v;
     qDebug() << "[ Acceleration ] value: " << v;
+    acceleration = currSpeed - prevSpeed;
+    prevSpeed = currSpeed;
+    emit changed(acceleration);
 }

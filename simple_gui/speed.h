@@ -14,7 +14,11 @@ signals:
 
 public slots:
     //obsluga sygnalu
-    void onDisplacementChanged(double v);
+    void onDisplacementChange(double v);
+private:
+    double currDisplacement;
+    double prevDisplacement;
+    double speed;
 };
 
 #endif // SPEED_H

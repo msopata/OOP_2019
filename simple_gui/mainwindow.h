@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "acceleration.h"
+#include "displacement.h"
+#include "speed.h"
 
 namespace Ui {
 class MainWindow;
@@ -17,8 +20,14 @@ public:
 
 private slots:
 
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
+    Displacement *displacement;
+    Speed *speed;
+    Acceleration *acceleration;
+
 };
 
 #endif // MAINWINDOW_H

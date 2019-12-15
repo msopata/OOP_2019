@@ -17,8 +17,7 @@ signals:
 public slots:
 
 private:
-    //double value;
-    double values[3] = {0,0,0};
+    double value;
 
 };
 

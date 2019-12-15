@@ -3,11 +3,17 @@
 
 Speed::Speed(QObject *parent) : QObject(parent)
 {
-
+    prevDisplacement = 0;
+    currDisplacement = 0;
+    speed = 0;
 }
 
-void Speed::onDisplacementChanged(double v)
+void Speed::onDisplacementChange(double v)
 {
+    currDisplacement = v;
     qDebug() << "[ Speed ] changed to: " << v;
-    emit changed(v);
+    double time = 1.0;
+    speed = (currDisplacement - prevDisplacement) / time;
+    prevDisplacement = currDisplacement;
+    emit changed(speed);
 }
