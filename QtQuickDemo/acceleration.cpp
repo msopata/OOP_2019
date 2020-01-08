@@ -9,9 +9,9 @@ Acceleration::Acceleration(QObject *parent) : QObject(parent)
 void Acceleration::set(double v)
 {
     currSpeed = v;
-    qDebug() << "[ Acceleration ] value: " << v;
     acceleration = currSpeed - prevSpeed;
     prevSpeed = currSpeed;
+    qDebug() << "[ Acceleration ] value: " << acceleration;
 }
 
 double Acceleration::get() const

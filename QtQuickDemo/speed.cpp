@@ -11,11 +11,10 @@ Speed::Speed(QObject *parent) : QObject(parent)
 void Speed::set(double v)
 {
     currDisplacement = v;
-    qDebug() << "[ Speed ] changed to: " << v;
     double time = 1.0;
     speed = (currDisplacement - prevDisplacement) / time;
     prevDisplacement = currDisplacement;
-
+    qDebug() << "[ Speed ] changed to: " << speed;
 }
 
 double Speed::get() const

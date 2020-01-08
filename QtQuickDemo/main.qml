@@ -61,8 +61,6 @@ Window {
         id: displacement
         onChanged: function(){
             console.log(displacement.value)
-            speedValueLabel.text = speed.speed.toString()
-            accelerationValueLabel.text = acceleration.acceleration.toString()
             speed.onDisplacementChange(this.get())
         }
     }
@@ -70,13 +68,19 @@ Window {
     Speed{
         id: speed
         speed: 0
-        onChanged: acceleration.onSpeedChange(this.get())
+        onChanged: function(){
+            acceleration.onSpeedChange(this.get());
+        }
 
     }
 
     Acceleration{
         id: acceleration
         acceleration: 0
+        onChanged: function(){
+            speedValueLabel.text = speed.speed.toString()
+            accelerationValueLabel.text = acceleration.acceleration.toString()
+        }
     }
 
     Text {
